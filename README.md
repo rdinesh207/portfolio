@@ -31,7 +31,7 @@
 **Arizona State University**  
 *June 2024 - Present*
 
-- ** Plant Image Based Health Diagnostics System with BLIP-2 Image Captioning using Vicuna 7B and Gemini API **
+- Plant Image Based Health Diagnostics System with BLIP-2 Image Captioning using Vicuna 7B and Gemini API 
   - Trained ResNet50 with PlantVillage Data, obtaining TFLite using ONNx. Integrated with Gemini API as LLM for PoC and reference.
   - Initially trained Google’s ViT for the same dataset but shifted to SWIN Transformer for Low Level feature extraction due to low accuracy.
   - Integrated SWIN with Vicuna 7B as LLM to obtain plant information, disease/problem, and remedies.
@@ -42,12 +42,12 @@
 **Bosch Global Software Technologies Pvt. Ltd.**  
 *September 2019 - August 2022*
 
-- **RF Emission Analysis and Harmonic Anomaly Detection for Automotive Conformance**
+- RF Emission Analysis and Harmonic Anomaly Detection for Automotive Conformance
   - Initiated a website to view and store RF Emission data based on spectrum to compare for conformance analysis using Django.
   - Employed BiLSTM Autoencoder to find anomalies in the emissions and used them to find harmonics of resonant frequencies.
   - Generated reports with plots automatically, taking 10% of the time manually and achieving 85% accuracy.
 
-- **Smart Inventory Tracking Using Asset Detection and OCR**
+- Smart Inventory Tracking Using Asset Detection and OCR
   - Developed a website to store inventory data and track the arrival, use, storage, and shipment of packages using Django.
   - Leveraged Computer Vision YOLOv4-tiny algorithm to detect artifacts and Tesseract OCR to detect label data and store it in SQL.
   - Deployed the software on Raspberry Pi 3B+ with Pi SC0818 camera and Barcode Reader, saving 25 hours/week.
@@ -58,7 +58,7 @@
 **ConnectM Technology Solutions Pvt. Ltd.**  
 *January 2019 - March 2019*
 
-- ** Truck Driver Assistance System with Safety Constraints using Facial Recognition and Voice Assistance ChatBot **
+-  Truck Driver Assistance System with Safety Constraints using Facial Recognition and Voice Assistance ChatBot 
   - Built voice recognition and face recognition systems using CMU Pocket Sphinx and Haar Cascade, and AWS Face Rekognition.
   - Trained drowsiness detection using Facial Landmark detection and ensured modules could be deployed on Edge devices.
   - Seamlessly integrated the modules onto a Raspberry Pi 3B, ensuring optimal performance, user experience, and road safety.
