@@ -3,6 +3,7 @@ import { AiOutlineHome } from 'react-icons/ai';
 import { AiOutlineUser } from 'react-icons/ai';
 import { AiOutlineFileDone } from 'react-icons/ai';
 import { BiBook, BiMessageSquareDetail, BiBriefcase } from 'react-icons/bi';
+import { FaProjectDiagram } from 'react-icons/fa'
 import { RiServiceLine } from 'react-icons/ri';
 import './Nav.css';
 
@@ -51,6 +52,13 @@ const Nav = () => {
 				className={activeNav === '#skills' ? 'active' : ''}
 			>
 				<RiServiceLine />
+			</a>
+			<a
+				href='#portfolio'
+				onClick={() => setActiveNav('#portfolio')}
+				className={activeNav === '#portfolio' ? 'active' : ''}
+			>
+				<FaProjectDiagram />
 			</a>
 			<a
 				href='#contact'

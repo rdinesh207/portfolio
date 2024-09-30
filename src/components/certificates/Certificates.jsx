@@ -7,40 +7,33 @@
 
     const Certificates = () => {
         return (
-            <section className="ftco-section ftco-no-pb goto-here" id="certificates">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-9">
-                            <div id="certificates" className="page certificates">
-                                <h2 className="heading">Certificates</h2>
-                                <div className="certificates-grid">
-                                    {certificatesData.map((cert, index) => (
-                                        <div className="resume-wrap d-flex-col" key={index}>
-                                            <div className="d-flex ftco-animate fadeInUp ftco-animated">
-                                                <div className="icon d-flex align-items-center justify-content-center logo-container">
-                                                    <img src={`${cert.logo}`} alt={`${cert.title} logo`} />
-                                                </div>
-                                                <div className="text pl-3">
-                                                    <span className="date">{cert.date}</span>
-                                                    <h2>{cert.title}</h2>
-                                                    <span className="position">{cert.issuer}</span>
-                                                    <p>Skills: {cert.skills}</p>
-                                                </div>
-                                            </div>
-                                            <div className="counter-wrap ftco-animate d-flex mt-md-3 fadeInUp ftco-animated">
-                                                <div className="text">
-                                                    <p>
-                                                        <a href={cert.link} target="_blank" rel="noopener noreferrer" className="btn btn-primary py-3 px-3">View Certificate</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
+            <section id="certificates">
+			<h5>My Recent Work</h5>
+			<h2>Portfolio</h2>
+            <div className="container certificates__container">
+                {certificatesData.map((cert, index) => (
+                    <div className="certificates__item resume-wrap d-flex-col" key={index}>
+                        <div className="d-flex ftco-animate fadeInUp ftco-animated">
+                            <div className="icon d-flex align-items-center justify-content-center logo-container">
+                                <img src={`${cert.logo}`} alt={`${cert.title} logo`} />
+                            </div>
+                            <div className="text pl-3">
+                                <span className="date">{cert.date}</span>
+                                <h2>{cert.title}</h2>
+                                <span className="position">{cert.issuer}</span>
+                                <p>Skills: {cert.skills}</p>
+                            </div>
+                        </div>
+                        <div className="counter-wrap ftco-animate d-flex mt-md-3 fadeInUp ftco-animated">
+                            <div className="text">
+                                <p>
+                                    <a href={cert.link} target="_blank" rel="noopener noreferrer" className="btn btn-primary py-3 px-3">View Certificate</a>
+                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
+                ))}
+            </div>
             </section>
         );
     };
