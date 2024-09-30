@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.b06b937c.css",
-    "main.js": "/portfolio/static/js/main.3cb508a6.js",
+    "main.css": "/portfolio/static/css/main.997e6e08.css",
+    "main.js": "/portfolio/static/js/main.1faf21ef.js",
     "static/media/me-about.jpg": "/portfolio/static/media/me-about.f5025a2da5daa2bfea68.jpg",
     "static/media/me.png": "/portfolio/static/media/me.cbd5e2ef3f60b272fa17.png",
     "static/media/cv.pdf": "/portfolio/static/media/cv.0258547da56112f0b218.pdf",
@@ -13,11 +13,11 @@
     "static/media/ASU-logo.png": "/portfolio/static/media/ASU-logo.f6029bb19b686979b46d.png",
     "static/media/connectm.png": "/portfolio/static/media/connectm.757904904324891699b8.png",
     "index.html": "/portfolio/index.html",
-    "main.b06b937c.css.map": "/portfolio/static/css/main.b06b937c.css.map",
-    "main.3cb508a6.js.map": "/portfolio/static/js/main.3cb508a6.js.map"
+    "main.997e6e08.css.map": "/portfolio/static/css/main.997e6e08.css.map",
+    "main.1faf21ef.js.map": "/portfolio/static/js/main.1faf21ef.js.map"
   },
   "entrypoints": [
-    "static/css/main.b06b937c.css",
-    "static/js/main.3cb508a6.js"
+    "static/css/main.997e6e08.css",
+    "static/js/main.1faf21ef.js"
   ]
 }
