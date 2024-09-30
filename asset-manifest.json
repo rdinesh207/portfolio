@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.17d750ed.css",
-    "main.js": "/portfolio/static/js/main.2d68dcb2.js",
-    "static/media/cv.pdf": "/portfolio/static/media/cv.1676dcdc83730930d888.pdf",
+    "main.css": "/portfolio/static/css/main.b06b937c.css",
+    "main.js": "/portfolio/static/js/main.3cb508a6.js",
     "static/media/me-about.jpg": "/portfolio/static/media/me-about.f5025a2da5daa2bfea68.jpg",
     "static/media/me.png": "/portfolio/static/media/me.cbd5e2ef3f60b272fa17.png",
+    "static/media/cv.pdf": "/portfolio/static/media/cv.0258547da56112f0b218.pdf",
     "static/media/bgsw.png": "/portfolio/static/media/bgsw.6d61e43f1f2fe9d8cc61.png",
     "static/media/duke-university.png": "/portfolio/static/media/duke-university.37d35a9190c137391e5f.png",
     "static/media/coursera.png": "/portfolio/static/media/coursera.dac2ca977c7c069464cd.png",
@@ -13,11 +13,11 @@
     "static/media/ASU-logo.png": "/portfolio/static/media/ASU-logo.f6029bb19b686979b46d.png",
     "static/media/connectm.png": "/portfolio/static/media/connectm.757904904324891699b8.png",
     "index.html": "/portfolio/index.html",
-    "main.17d750ed.css.map": "/portfolio/static/css/main.17d750ed.css.map",
-    "main.2d68dcb2.js.map": "/portfolio/static/js/main.2d68dcb2.js.map"
+    "main.b06b937c.css.map": "/portfolio/static/css/main.b06b937c.css.map",
+    "main.3cb508a6.js.map": "/portfolio/static/js/main.3cb508a6.js.map"
   },
   "entrypoints": [
-    "static/css/main.17d750ed.css",
-    "static/js/main.2d68dcb2.js"
+    "static/css/main.b06b937c.css",
+    "static/js/main.3cb508a6.js"
   ]
 }
