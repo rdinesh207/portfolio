@@ -1,0 +1,89 @@
+.education__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.education__container>div {
+  background-color: var(--color-bg-variant);
+  padding: 2.4rem 5rem;
+  border-radius: 2rem;
+  border: 1px solid transparent;
+  transition: var(--transition);
+}
+
+.education__container>div:hover {
+  background-color: transparent;
+  border-color: var(--color-primary-variant);
+  cursor: default;
+}
+
+.education__container>div h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+}
+
+.education__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.education__details {
+  display: flex;
+  gap: 1rem;
+}
+
+.education__details-icon {
+  margin-top: 6px;
+  color: var(--color-primary);
+}
+
+/*=============================================
+=        MEDIA QUERIES FOR MEDIUM DEVICES     =
+=============================================*/
+@media screen and (max-width: 1024px) {
+  .education__container {
+    grid-template-columns: 1fr;
+  }
+  
+  .logo-container img {
+    max-width: 50px; /* Adjust the width as needed */
+    max-height: 50px; /* Adjust the height as needed */
+    vertical-align: middle;
+    border-style: none;
+  }
+  
+  .logo-container {
+    width: 50px; /* Match the image size */
+    height: 50px; /* Match the image size */
+    display: flex;
+    align-items: center; /* Center the image vertically */
+    justify-content: center; /* Center the image horizontally */
+  }
+
+  .education__container>div {
+    width: 80%;
+    padding: 2rem;
+    margin: 0 auto;
+  }
+
+  .education__content {
+    padding: 1rem;
+  }
+}
+
+/*=============================================
+=       MEDIA QUERIES FOR SMALL DEVICES       =
+=============================================*/
+@media screen and (max-width: 600px) {
+  .education__container {
+    gap: 1rem;
+  }
+
+  .education__container>div {
+    width: 100%;
+    padding: 2rem 1rem;
+  }
+}

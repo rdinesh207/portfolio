@@ -1,7 +1,8 @@
 import { React, useState } from 'react';
 import { AiOutlineHome } from 'react-icons/ai';
 import { AiOutlineUser } from 'react-icons/ai';
-import { BiBook, BiMessageSquareDetail } from 'react-icons/bi';
+import { AiOutlineFileDone } from 'react-icons/ai';
+import { BiBook, BiMessageSquareDetail, BiBriefcase } from 'react-icons/bi';
 import { RiServiceLine } from 'react-icons/ri';
 import './Nav.css';
 
@@ -28,12 +29,26 @@ const Nav = () => {
 				onClick={() => setActiveNav('#experience')}
 				className={activeNav === '#experience' ? 'active' : ''}
 			>
+				<BiBriefcase />
+			</a>
+			<a
+				href='#education'
+				onClick={() => setActiveNav('#education')}
+				className={activeNav === '#education' ? 'active' : ''}
+			>
 				<BiBook />
 			</a>
 			<a
-				href='#services'
-				onClick={() => setActiveNav('#services')}
-				className={activeNav === '#services' ? 'active' : ''}
+				href='#certificates'
+				onClick={() => setActiveNav('#certificates')}
+				className={activeNav === '#certificates' ? 'active' : ''}
+			>
+				<AiOutlineFileDone />
+			</a>
+			<a
+				href='#skills'
+				onClick={() => setActiveNav('#skills')}
+				className={activeNav === '#skills' ? 'active' : ''}
 			>
 				<RiServiceLine />
 			</a>

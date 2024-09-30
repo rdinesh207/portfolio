@@ -12,6 +12,22 @@
   transition: var(--transition);
 }
 
+.logo-container img {
+  max-width: 50px; /* Adjust the width as needed */
+  max-height: 50px; /* Adjust the height as needed */
+  vertical-align: middle;
+  border-style: none;
+}
+
+.logo-container {
+  width: 50px; /* Match the image size */
+  height: 50px; /* Match the image size */
+  display: flex;
+  align-items: center; /* Center the image vertically */
+  justify-content: center; /* Center the image horizontally */
+}
+
+
 .experience__container>div:hover {
   background-color: transparent;
   border-color: var(--color-primary-variant);

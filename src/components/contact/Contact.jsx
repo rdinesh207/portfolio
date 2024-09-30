@@ -4,6 +4,8 @@ import './Contact.css';
 import { MdOutlineEmail } from 'react-icons/md';
 import { RiMessengerLine } from 'react-icons/ri';
 import { BsWhatsapp } from 'react-icons/bs';
+import { BsLinkedin } from 'react-icons/bs';
+import { BsGithub } from 'react-icons/bs';
 
 const Contact = () => {
 	const form = useRef();
@@ -11,10 +13,10 @@ const Contact = () => {
 	const sendEmail = (e) => {
 		e.preventDefault();
 		emailjs.sendForm(
-			'service_c4qhhn8',
-			'template_oe13wt5',
+			'service_u6g7sah',
+			'template_pczimnf',
 			form.current,
-			'b8TCfT2FU9ipqwitU'
+			'IQarIunzewqSF6tCv'
 		);
 		e.target.reset();
 	};
@@ -29,9 +31,9 @@ const Contact = () => {
 					<article className='contact__option'>
 						<MdOutlineEmail className='contact__option-icon' />
 						<h4>Email</h4>
-						<h5>catevika.test@gmail.com</h5>
+						<h5>rdinesh2@asu.com</h5>
 						<a
-							href='mailto:catevika.test@gmail.com'
+							href='mailto:rdinesh2@asu.com'
 							target='_blank'
 							rel='noopener noreferrer'
 						>
@@ -39,27 +41,26 @@ const Contact = () => {
 						</a>
 					</article>
 					<article className='contact__option'>
-						<RiMessengerLine className='contact__option-icon' />
-						<h4>Messenger</h4>
-						<h5>Catevika</h5>
+						<BsLinkedin className='contact__option-icon' />
+						<h4>Linkedin</h4>
+						<h5>Raghavendra Dinesh</h5>
 						<a
-							href='https://m.me/catevika'
+							href='https://www.linkedin.com/in/raghavendradinesh/'
 							target='_blank'
 							rel='noopener noreferrer'
 						>
-							Send a message
+							Check it out
 						</a>
 					</article>
 					<article className='contact__option'>
-						<BsWhatsapp className='contact__option-icon' />
-						<h4>Whatsapp</h4>
-						<h5>0123456789</h5>
+						<BsGithub className='contact__option-icon' />
+						<h4>GitHub</h4>
 						<a
-							href='https://api.whatsapp.com/send?phone=0123456789'
+							href='https://github.com/rdinesh207/'
 							target='_blank'
 							rel='noopener noreferrer'
 						>
-							Send a message
+							Check it out
 						</a>
 					</article>
 				</div>
