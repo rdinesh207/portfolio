@@ -1,106 +1,85 @@
 .certificates__container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem; /* Space between items */
 }
 
-.certificates__container>div {
+.certificates__item {
   background-color: var(--color-bg-variant);
-  padding: 2.4rem 5rem;
+  padding: 1.3rem;
   border-radius: 2rem;
   border: 1px solid transparent;
   transition: var(--transition);
+  flex: 1 1 calc(33% - 3rem); /* Default: 3 items in a row */
+  min-width: 280px; /* Minimum width for layout */
+  box-sizing: border-box; /* Include padding/border in width */
 }
 
-.logo-container img {
-  max-width: 50px; /* Adjust the width as needed */
-  max-height: 50px; /* Adjust the height as needed */
-  vertical-align: middle;
-  border-style: none;
+/* Styles for the main certificates section */
+.certificates {
+  background-color: var(--color-bg-variant);
+  border-radius: 0 0 2rem 2rem;
+  border: 1px solid var(--color-primary);
+  height: fit-content; /* Auto height based on content */
+  transition: var(--transition);
 }
 
-.logo-container {
-  width: 50px; /* Match the image size */
-  height: 50px; /* Match the image size */
-  display: flex;
-  align-items: center; /* Center the image vertically */
-  justify-content: center; /* Center the image horizontally */
-}
-
-.certificates__container>div:hover {
+.certificates:hover {
   background-color: transparent;
   border-color: var(--color-primary-variant);
   cursor: default;
 }
 
-.certificates__container>div h3 {
+.certificates__head {
+  background-color: var(--color-primary);
+  padding: 2rem;
+  border-radius: 0 0 2rem 2rem;
+  box-shadow: 0 2rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.certificates__head h3 {
+  color: var(--color-bg);
+  font-size: 1rem;
   text-align: center;
-  margin-bottom: 2rem;
-  color: var(--color-primary);
 }
 
-.certificates__content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-
-.certificates__details {
-  display: flex;
-  gap: 1rem;
-}
-
-.certificates__details-icon {
-  margin-top: 6px;
-  color: var(--color-primary);
-}
-
-/*=============================================
-=        MEDIA QUERIES FOR MEDIUM DEVICES     =
-=============================================*/
+/* Media Queries for Responsiveness */
 @media screen and (max-width: 1024px) {
-  .certificates__container {
-    grid-template-columns: 1fr;
-  }
-
-  .certificates__container>div {
-    width: 80%;
-    padding: 2rem;
-    margin: 0 auto;
-  }
-
-  .certificates__content {
-    padding: 1rem;
+  .certificates__item {
+    flex: 1 1 calc(50% - 3rem); /* 2 items in one row for medium devices */
   }
 }
 
-/*=============================================
-=       MEDIA QUERIES FOR SMALL DEVICES       =
-=============================================*/
 @media screen and (max-width: 600px) {
-  .certificates__container {
-    gap: 1rem;
-  }
-
-  .certificates__container>div {
-    width: 100%;
-    padding: 2rem 1rem;
+  .certificates__item {
+    flex: 1 1 100%; /* 1 item in a row for small devices */
   }
 }
 
-.certificates-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
-  gap: 20px; /* Adjust the space between items */
+/* Logo container styles */
+.logo-container img {
+  max-width: 50px;
+  max-height: 50px;
+  vertical-align: middle;
+  border-style: none;
 }
 
+.logo-container {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Resume wrap styles */
 .resume-wrap {
-  border: 1px solid #ccc; /* Optional: Add border */
-  padding: 20px; /* Optional: Add padding */
-  border-radius: 8px; /* Optional: Add rounded corners */
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
   transition: transform 0.3s;
 }
 
 .resume-wrap:hover {
-  transform: scale(1.05); /* Optional: Add a hover effect */
+  transform: scale(1.05);
 }
