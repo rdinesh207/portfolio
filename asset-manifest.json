@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.0c3194bb.css",
+    "main.css": "/portfolio/static/css/main.f2a1f6c1.css",
     "main.js": "/portfolio/static/js/main.82bf95b0.js",
     "static/media/me-about.jpg": "/portfolio/static/media/me-about.f5025a2da5daa2bfea68.jpg",
     "static/media/me.png": "/portfolio/static/media/me.cbd5e2ef3f60b272fa17.png",
@@ -13,11 +13,11 @@
     "static/media/ASU-logo.png": "/portfolio/static/media/ASU-logo.f6029bb19b686979b46d.png",
     "static/media/connectm.png": "/portfolio/static/media/connectm.757904904324891699b8.png",
     "index.html": "/portfolio/index.html",
-    "main.0c3194bb.css.map": "/portfolio/static/css/main.0c3194bb.css.map",
+    "main.f2a1f6c1.css.map": "/portfolio/static/css/main.f2a1f6c1.css.map",
     "main.82bf95b0.js.map": "/portfolio/static/js/main.82bf95b0.js.map"
   },
   "entrypoints": [
-    "static/css/main.0c3194bb.css",
+    "static/css/main.f2a1f6c1.css",
     "static/js/main.82bf95b0.js"
   ]
 }
