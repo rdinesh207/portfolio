@@ -34,3 +34,15 @@ nav a.active {
   background-color: var(--color-primary);
   color: var(--color-bg);
 }
+
+@media screen and (max-width: 600px) {
+  nav {
+    padding: 0.35rem 0.85rem; /* Reduce padding by half */
+    border-radius: 1.5rem; /* Adjust border radius if necessary */
+  }
+
+  nav a {
+    padding: 0.45rem; /* Reduce link padding */
+    font-size: 0.55rem; /* Reduce font size */
+  }
+}
