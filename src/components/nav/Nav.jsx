@@ -1,14 +1,35 @@
-import { React, useState } from 'react';
+import './Nav.css';
+import { React, useState, useEffect  } from 'react';
 import { AiOutlineHome } from 'react-icons/ai';
 import { AiOutlineUser } from 'react-icons/ai';
 import { AiOutlineFileDone } from 'react-icons/ai';
 import { BiBook, BiMessageSquareDetail, BiBriefcase } from 'react-icons/bi';
 import { FaProjectDiagram } from 'react-icons/fa'
 import { RiServiceLine } from 'react-icons/ri';
-import './Nav.css';
 
 const Nav = () => {
 	const [activeNav, setActiveNav] = useState('#');
+	useEffect(() => {
+		const sections = document.querySelectorAll('section');
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					setActiveNav(`#${entry.target.id}`);
+				}
+			});
+		}, { threshold: 0.5 });
+
+		sections.forEach(section => {
+			observer.observe(section);
+		});
+
+		return () => {
+			sections.forEach(section => {
+				observer.unobserve(section);
+			});
+		};
+	}, []);
+
 	return (
 		<nav>
 			<a

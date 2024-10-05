@@ -7,11 +7,11 @@ import './Education.css';
 const Education = () => {
 	return (
 		<section class="ftco-section ftco-no-pb goto-here" id="education">
+			<h2>Education</h2>
 			<div class="container" bis_skin_checked="1">
 				<div class="row" bis_skin_checked="1">
 					<div class="col-md-9" bis_skin_checked="1">
 						<div id="page-2" class="page two" bis_skin_checked="1">
-							<h2 class="heading">Education</h2>
 							<div class="resume-wrap d-flex ftco-animate fadeInUp ftco-animated" bis_skin_checked="1">
 								<div class="d-flex align-items-center justify-content-center logo-container" bis_skin_checked="1">
 									<a>
@@ -20,7 +20,7 @@ const Education = () => {
 								</div>
 								<div class="text pl-3" bis_skin_checked="1">
 									<span class="date">2022-2024</span>
-									<h2>Arizona State Univeristy</h2>
+									<h3>Arizona State Univeristy</h3>
 									<span class="position">Masters in RAS-Artificial Intelligence</span>
 									<br></br>
 									<span class="gpa">GPA: 3.97/4.0</span>
@@ -34,7 +34,7 @@ const Education = () => {
 								</div>
 								<div class="text pl-3" bis_skin_checked="1">
 									<span class="date">2015-2019</span>
-									<h2>PESIT South Campus</h2>
+									<h3>PESIT South Campus</h3>
 									<span class="position">Bachelors in Electronics and Communication Engineering</span>
 									<br></br>
 									<span class="cgpa">CGPA: 7.5/10.0</span>
