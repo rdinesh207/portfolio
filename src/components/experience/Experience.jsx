@@ -8,11 +8,11 @@ import CNM from '../../assets/connectm.png';
 const Experience = () => {
 	return (
 		<section class="ftco-section ftco-no-pb goto-here" id="experience">
+			<h2>Experience</h2>
 			<div class="container" bis_skin_checked="1">
 				<div class="row" bis_skin_checked="1">
 					<div class="col-md-9" bis_skin_checked="1">
 						<div id="page-1" class="page one" bis_skin_checked="1">
-							<h2 class="heading">Experience</h2>
 							<div class="resume-wrap d-flex ftco-animate fadeInUp ftco-animated" bis_skin_checked="1">
 								<div class="icon d-flex align-items-center justify-content-center logo-container" bis_skin_checked="1">
 										<img src={ASU} alt="ASU Logo"></img>
