@@ -8,8 +8,7 @@
     const Certificates = () => {
         return (
             <section id="certificates">
-			<h5>My Recent Work</h5>
-			<h2>Portfolio</h2>
+			<h2>Certificates</h2>
             <div className="container certificates__container">
                 {certificatesData.map((cert, index) => (
                     <div className="certificates__item resume-wrap d-flex-col" key={index}>
