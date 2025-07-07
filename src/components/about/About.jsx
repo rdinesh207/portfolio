@@ -22,24 +22,27 @@ const About = () => {
 						<article className='about__card'>
 							<BiBriefcase className='about__icon' />
 							<h5>Experience</h5>
-							<small>3+ years Working</small>
+							<small>5+ years Working</small>
 						</article>
 						<article className='about__card'>
 							<FaProjectDiagram className='about__icon' />
 							<h5>AI/ML Projects</h5>
-							<small>20+ Completed</small>
+							<small>25+ Completed</small>
 						</article>
 						<article className='about__card'>
 							<AiOutlineFileDone className='about__icon' />
 							<h5>Certificates</h5>
-							<small>10+ courses and specialization</small>
+							<small>15+ courses and specialization</small>
 						</article>
 					</div>
 					<p>
-						I am advancing plant health diagnostics at Arizona State University by applying cutting-edge technologies, including BLIP-2 for image captioning with large language models (LLMs) such as Vicuna. My research journey began with a Proof of Concept using ResNet50 for image classification and Gemini for generating captions based on those classifications. I subsequently transitioned to using Vision Transformers (ViT) for integration with LLMs and Zeroshot or One Shot learning capabilities. However, due to ViT's limitations in classifying small features, I experimented with Dino V2 before choosing SWIN for its state-of-the-art performance in medical imaging. In evaluating zero-shot capabilities, I compared FLAN-T5 and Vicuna 7B, selecting Vicuna 7B due to its superior ROUGE score.
+						I am a Data Scientist and ML Engineer with expertise in developing innovative AI solutions. Currently at Indra Solutions LLC, I engineer applications using FastAPI and LLMs to analyze contract data and streamline RFP document generation, enabling faster proposal submissions and competitive advantage.
 					</p>
 					<p>
-						My academic background includes an MS in Robotics and Autonomous Systems with a concentration in AI. My core competencies are in leveraging Computer Vision, Transformers and Sequence Models to create innovative solutions. This expertise was honed during my tenure at Bosch Global Software Technologies, where I contributed to enhancing efficiency through smart inventory systems and harmonic anomaly detection.
+						My recent work at Arizona State University focused on advancing plant health diagnostics through cutting-edge technologies, including custom BLIP-2 implementations with large vision and language models. I achieved 98% accuracy with Lite ResNet50 and 96% accuracy with fine-tuned SWIN Transformers, while developing end-to-end solutions that leverage QFormer to interface frozen SWIN encoders with Llama 3.2 3B for generating localized cures.
+					</p>
+					<p>
+						My academic background includes an MS in Robotics and Autonomous Systems with a concentration in AI. My core competencies span Computer Vision, Transformers, and Sequence Models, honed through diverse experience at Bosch Global Software Technologies and various AI-driven projects.
 					</p>
 					<a href='#contact' className='btn btn-primary'>
 						Want to connect?

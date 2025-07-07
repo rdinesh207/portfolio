@@ -1,74 +1,106 @@
 import React from 'react';
-import { BsPatchCheckFill } from 'react-icons/bs';
 import './Experience.css';
 import BGSW from '../../assets/bgsw.png';
 import ASU from '../../assets/ASU-logo.png';
 import CNM from '../../assets/connectm.png';
+import INDRASOL from '../../assets/Indrasol company logo_.png';
 
 const Experience = () => {
 	return (
-		<section class="ftco-section ftco-no-pb goto-here" id="experience">
+		<section className="experience" id="experience">
 			<h2>Experience</h2>
-			<div class="container" bis_skin_checked="1">
-				<div class="row" bis_skin_checked="1">
-					<div class="col-md-9" bis_skin_checked="1">
-						<div id="page-1" class="page one" bis_skin_checked="1">
-							<div class="resume-wrap d-flex ftco-animate fadeInUp ftco-animated" bis_skin_checked="1">
-								<div class="icon d-flex align-items-center justify-content-center logo-container" bis_skin_checked="1">
-										<img src={ASU} alt="ASU Logo"></img>
-								</div>
-								<div class="text pl-3" bis_skin_checked="1">
-									<span class="date">June 2024 - Present</span>
-	 					<h2>Multi Modal Deep Learning Researcher</h2>
-						<span class="position">Arizona State University</span><br></br>
-	 					<span class="position"><i>Plant Image based Health Diagnostics System with BLIP-2 Image Captioning using Vicuna 7B and Gemini API</i></span>
-	 					<p></p>
-	 						<li>Trained ResNet50 with PlantVillage Data. Obtained TFLite using ONNx. Integrated with Gemini API as LLM for PoC and reference.</li>
-	 						<li>Initially trained Google’s ViT for same dataset but due to low accuracy shifted to SWIN Transformer for Low Level feature extraction.</li>
-	 						<li>Integrated SWIN with Vicuna 7B as LLM to obtain plant information, disease/problem and remedies.</li>
-	 					<p></p>								</div>
+			<div className="container experience__container">
+				<div className="experience__content">
+					{/* Indra Solutions */}
+					<div className="experience__item">
+						<div className="experience__logo">
+							<img src={INDRASOL} alt="Indrasol Logo" />
+						</div>
+						<div className="experience__details">
+							<div className="experience__header">
+								<h3>Data Scientist</h3>
+								<span className="company">Indra Solutions LLC</span>
+								<span className="date">May 2025 - Present</span>
 							</div>
-							<div class="resume-wrap d-flex ftco-animate fadeInUp ftco-animated"  bis_skin_checked="1">
-								<div class="icon d-flex align-items-center justify-content-center logo-container">
-									<img src={BGSW} alt="Bosch Logo"></img>
-								</div>
-								<div class="text pl-3">
-									<span class="date">Sep 2019 - Aug 2022</span>
-									<h2>Automation Engineer</h2>
-									<span class="position">Bosch Global Software Technologies Pvt. Ltd.</span><br></br>
-									<span class="position"><i>RF Emission Analysis and Harmonic Anomaly Detection for Automotive Conformance</i></span>
-									<p></p>
-										<li>Initiated a website to view and store RF Emission data based on spectrum to compare for conformance analysis using Django.</li>
-										<li>Employed BiLSTM Autoencoder to find anomalies in the emissions and used them to find harmonics of resonant frequencies.</li>
-										<li>Generated reports with plots automatically taking 10% of the time taken manually with 85% accuracy.</li>
-										<br></br>
-										<i>Smart Inventory Tracking Using Asset Detection and OCR</i>
-										<li>Developed a website to store Inventory data and track arrival, use, storage, and shipment of packages using Django.</li>
-										<li>Leveraged Computer Vision YOLOv4-tiny algorithm to detect artifacts and Tesseract OCR to detect Label data and store in SQL.</li>
-										<li>Deployed the software on Raspberry Pi 3B+ with Pi SC0818 camera and Barcode Reader saving 25 hours/week.</li>
-										<br></br>
-										<i>Team Lead Projects</i>
-										<li>Led a team of three to develop and implement Pattern Recognition tools, enabling analysis of test results and report generation.</li>
-										<li>Collaborated with a team of two to spearhead the development of the Azure CAN Dashboard, which facilitates data transfer from ECU to Azure.</li>
-									<p></p>
-								</div>
+							<ul className="experience__bullets">
+								<li>Engineered an app using FastAPI and LLMs to analyze contract data and our profile, resulting in more efficient generation of RFP documents</li>
+								<li>Expedited proposal submissions, enabling the team to target and secure contracts ahead of competitors</li>
+							</ul>
+						</div>
+					</div>
+
+					{/* ASU */}
+					<div className="experience__item">
+						<div className="experience__logo">
+							<img src={ASU} alt="ASU Logo" />
+						</div>
+						<div className="experience__details">
+							<div className="experience__header">
+								<h3>Deep Learning Engineer</h3>
+								<span className="company">Arizona State University</span>
+								<span className="date">Jun 2024 - May 2025</span>
 							</div>
-							<div class="resume-wrap d-flex ftco-animate fadeInUp ftco-animated"  bis_skin_checked="1">
-								<div class="icon d-flex align-items-center justify-content-center logo-container">
-									<img src={CNM} alt="ConnectM Logo"></img>
-								</div>
-								<div class="text pl-3">
-									<span class="date">Jan 2019 - Mar 2019</span>
-									<h2>Artificial Intelligence Intern</h2>
-									<span class="position">ConnectM Technology Solutions Pvt. Ltd.</span><br></br>
-									<span class="position"><i>Truck Driver Assistance System with Safety Constraints using Facial Recognition and Voice Assistance ChatBot.</i></span>
-									<p></p>
-										<li>Built voice recognition and face recognition systems using CMU Pocket Sphinx and Haar Cascade and AWS Face Recognition.</li>
-										<li>Trained drowsiness detection using Facial Landmark detection and ensured modules can be deployed on Edge devices.</li>
-										<li>Seamlessly integrated the modules onto a Raspberry Pi 3B, ensuring optimal performance, user experience, and road safety.</li>
-									<p></p>
-								</div>
+							<ul className="experience__bullets">
+								<li>Engineered a custom BLIP-2 that integrates large vision and language models for plant health diagnostics attaining 98% accuracy with a Lite ResNet50 model and 96% accuracy with a fine-tuned SWIN Transformer over 40 epochs</li>
+								<li>Enhanced diagnostic precision by developing an end-to-end solution that leverages QFormer to interface a frozen SWIN encoder with Llama 3.2 3B, achieving a maximum RougeL F1 score of 0.86 for generating localized cure</li>
+								<li>Improved treatment insights by first validating a proof-of-concept using Gemini API (RougeL F1 score of 0.2) and later optimizing performance with PEFT on Vicuna 7B (score of 0.6) before transitioning to Llama 3.2 3B</li>
+							</ul>
+						</div>
+					</div>
+
+					{/* America Reads */}
+					<div className="experience__item">
+						<div className="experience__logo">
+							<img src={ASU} alt="ASU Logo" />
+						</div>
+						<div className="experience__details">
+							<div className="experience__header">
+								<h3>Tutor</h3>
+								<span className="company">America Reads, Mary Lou Fulton Teachers College</span>
+								<span className="date">Oct 2022 - May 2024</span>
 							</div>
+							<ul className="experience__bullets">
+								<li>Developed a Gemini-driven platform that automatically generated daily activity plans and personalized worksheets, improving student engagement and learning outcomes</li>
+								<li>Enhanced adaptive assessment by designing a module that customizes questions based on student progress, leading to more accurate evaluations and tailored learning experiences</li>
+							</ul>
+						</div>
+					</div>
+
+					{/* Bosch */}
+					<div className="experience__item">
+						<div className="experience__logo">
+							<img src={BGSW} alt="Bosch Logo" />
+						</div>
+						<div className="experience__details">
+							<div className="experience__header">
+								<h3>Automation Engineer</h3>
+								<span className="company">Bosch Global Software Technologies Pvt. Ltd.</span>
+								<span className="date">Sep 2019 - Aug 2022</span>
+							</div>
+							<ul className="experience__bullets">
+								<li>Delivered an RF emission analysis portal with interactive visualizations by Plotly. Agile practices applied during iterative refinements of an Autoencoder anomaly detection—reducing analysis time from 30–50 hours to 6–8 hours</li>
+								<li>Advanced lab asset management by designing a smart inventory tracking system on Raspberry Pi 3B that integrated YOLOv4-tiny for asset detection and Tesseract OCR for auto labeling, to provide real-time tracking</li>
+								<li>Accelerated report generation, reducing manual processing time by 90% by building a web application to automate data extraction and document rendering</li>
+							</ul>
+						</div>
+					</div>
+
+					{/* ConnectM */}
+					<div className="experience__item">
+						<div className="experience__logo">
+							<img src={CNM} alt="ConnectM Logo" />
+						</div>
+						<div className="experience__details">
+							<div className="experience__header">
+								<h3>Artificial Intelligence Intern</h3>
+								<span className="company">ConnectM Technology Solutions Pvt. Ltd.</span>
+								<span className="date">Jan 2019 - Mar 2019</span>
+							</div>
+							<ul className="experience__bullets">
+								<li>Developed a Driver Assistance System with Safety Constraints using Facial Recognition and Voice Assistance, enhancing driver safety by alerting them to potential hazards</li>
+								<li>Built voice and face recognition systems using CMU Pocket Sphinx, Haar Cascade, and AWS Face Rekognition, improving system accuracy and user interaction</li>
+								<li>Trained drowsiness detection using Facial Landmark detection and integrated all modules on Raspberry Pi 3B, resulting in a comprehensive system that alerts drivers to prevent accidents</li>
+							</ul>
 						</div>
 					</div>
 				</div>
