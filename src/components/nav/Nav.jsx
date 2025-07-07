@@ -1,10 +1,8 @@
 import './Nav.css';
 import { React, useState, useEffect  } from 'react';
-import { AiOutlineHome } from 'react-icons/ai';
-import { AiOutlineUser } from 'react-icons/ai';
-import { AiOutlineFileDone } from 'react-icons/ai';
-import { BiBook, BiMessageSquareDetail, BiBriefcase } from 'react-icons/bi';
-import { FaProjectDiagram } from 'react-icons/fa'
+import { AiOutlineHome, AiOutlineUser, AiOutlineFileDone } from 'react-icons/ai';
+import { BiBook, BiMessageSquareDetail, BiBriefcase, BiAward } from 'react-icons/bi';
+import { FaProjectDiagram } from 'react-icons/fa';
 import { RiServiceLine } from 'react-icons/ri';
 
 const Nav = () => {
@@ -54,18 +52,18 @@ const Nav = () => {
 				<BiBriefcase />
 			</a>
 			<a
+				href='#portfolio'
+				onClick={() => setActiveNav('#portfolio')}
+				className={activeNav === '#portfolio' ? 'active' : ''}
+			>
+				<FaProjectDiagram />
+			</a>
+			<a
 				href='#education'
 				onClick={() => setActiveNav('#education')}
 				className={activeNav === '#education' ? 'active' : ''}
 			>
 				<BiBook />
-			</a>
-			<a
-				href='#certificates'
-				onClick={() => setActiveNav('#certificates')}
-				className={activeNav === '#certificates' ? 'active' : ''}
-			>
-				<AiOutlineFileDone />
 			</a>
 			<a
 				href='#skills'
@@ -75,11 +73,11 @@ const Nav = () => {
 				<RiServiceLine />
 			</a>
 			<a
-				href='#portfolio'
-				onClick={() => setActiveNav('#portfolio')}
-				className={activeNav === '#portfolio' ? 'active' : ''}
+				href='#certificates'
+				onClick={() => setActiveNav('#certificates')}
+				className={activeNav === '#certificates' ? 'active' : ''}
 			>
-				<FaProjectDiagram />
+				<BiAward />
 			</a>
 			<a
 				href='#contact'
