@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.25ddacea.css",
-    "main.js": "/portfolio/static/js/main.27f7eed6.js",
+    "main.css": "/portfolio/static/css/main.55ac5b17.css",
+    "main.js": "/portfolio/static/js/main.6dac9a3b.js",
     "static/media/me-about.jpg": "/portfolio/static/media/me-about.f5025a2da5daa2bfea68.jpg",
     "static/media/me.png": "/portfolio/static/media/me.cbd5e2ef3f60b272fa17.png",
     "static/media/bgsw.png": "/portfolio/static/media/bgsw.6d61e43f1f2fe9d8cc61.png",
@@ -14,11 +14,11 @@
     "static/media/Indrasol company logo_.png": "/portfolio/static/media/Indrasol company logo_.2bf6d82557dc6ccebd78.png",
     "static/media/Raghavendra Dinesh_Resume.pdf": "/portfolio/static/media/Raghavendra Dinesh_Resume.03cf14daacaea909b7f6.pdf",
     "index.html": "/portfolio/index.html",
-    "main.25ddacea.css.map": "/portfolio/static/css/main.25ddacea.css.map",
-    "main.27f7eed6.js.map": "/portfolio/static/js/main.27f7eed6.js.map"
+    "main.55ac5b17.css.map": "/portfolio/static/css/main.55ac5b17.css.map",
+    "main.6dac9a3b.js.map": "/portfolio/static/js/main.6dac9a3b.js.map"
   },
   "entrypoints": [
-    "static/css/main.25ddacea.css",
-    "static/js/main.27f7eed6.js"
+    "static/css/main.55ac5b17.css",
+    "static/js/main.6dac9a3b.js"
   ]
 }
