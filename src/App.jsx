@@ -10,6 +10,7 @@ import Certificates from './components/certificates/Certificates';
 import Contact from './components/contact/Contact';
 import Footer from './components/footer/Footer';
 import './App.css';
+import ChatWidget from './components/chat/ChatWidget';
 
 const App = () => {
 	return (
@@ -24,6 +25,7 @@ const App = () => {
 			<Certificates />
 			<Contact />
 			<Footer />
+			<ChatWidget />
 		</>
 	);
 };
