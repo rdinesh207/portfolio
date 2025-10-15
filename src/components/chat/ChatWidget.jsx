@@ -9,7 +9,7 @@ export default function ChatWidget() {
     {
       id: 'welcome',
       role: 'assistant',
-      text: "Hello! I'm Raghavendra Dinesh. Ask me about my skills, projects, education, or experience.",
+      text: "Hello! I'm Raghavendra Dinesh's Portfolio Assistant. You can ask me about his skills, projects, education, or experience.",
       time: new Date()
     }
   ]);
