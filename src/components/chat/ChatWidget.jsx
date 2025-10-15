@@ -85,6 +85,8 @@ export default function ChatWidget() {
     setInput('');
     try {
       if (!endpoint) throw new Error('Missing RAG function endpoint configuration');
+      // include recent chat history (last 8 messages)
+      const history = messages.slice(-8).map(m => ({ role: m.role, text: m.text }));
       const res = await fetch(endpoint, {
         method: 'POST',
         headers: {
@@ -92,7 +94,7 @@ export default function ChatWidget() {
           'Authorization': `Bearer ${process.env.REACT_APP_SUPABASE_ANON_KEY || ''}`,
           'apikey': process.env.REACT_APP_SUPABASE_ANON_KEY || ''
         },
-        body: JSON.stringify({ question: q, k: 5 })
+        body: JSON.stringify({ question: q, k: 5, history })
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error || 'Request failed');
