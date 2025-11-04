@@ -3,6 +3,86 @@ import './ChatWidget.css';
 
 const formatTime = (d) => d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
+function parseInlineMarkdown(text) {
+  const elements = [];
+  let keyIdx = 0;
+  const codeSplit = text.split(/(`[^`]*`)/g);
+  const processLinksBoldItalic = (str) => {
+    // Links first: [text](http(s)://url)
+    const parts = [];
+    let remaining = str;
+    const linkRe = /\[([^\]]+)\]\((https?:[^)\s]+)\)/;
+    while (true) {
+      const m = remaining.match(linkRe);
+      if (!m) { parts.push(remaining); break; }
+      const [full, label, url] = m;
+      const idx = m.index;
+      if (idx > 0) parts.push(remaining.slice(0, idx));
+      parts.push({ type: 'a', label, url });
+      remaining = remaining.slice(idx + full.length);
+    }
+    // Now process bold then italic in each text piece
+    const inlineNodes = parts.flatMap((p) => {
+      if (typeof p !== 'string') return [p];
+      const boldSplit = p.split(/(\*\*[^*]+\*\*)/g);
+      return boldSplit.flatMap((b) => {
+        if (/^\*\*[^*]+\*\*$/.test(b)) {
+          return [{ type: 'strong', text: b.slice(2, -2) }];
+        }
+        const italicSplit = b.split(/(\*[^*]+\*)/g);
+        return italicSplit.map((i) => {
+          if (/^\*[^*]+\*$/.test(i)) return { type: 'em', text: i.slice(1, -1) };
+          return i;
+        });
+      });
+    });
+    return inlineNodes.map((node) => {
+      if (typeof node === 'string') return <span key={`t-${keyIdx++}`}>{node}</span>;
+      if (node.type === 'a') return <a key={`a-${keyIdx++}`} href={node.url} target="_blank" rel="noopener noreferrer">{node.label}</a>;
+      if (node.type === 'strong') return <strong key={`b-${keyIdx++}`}>{node.text}</strong>;
+      if (node.type === 'em') return <em key={`i-${keyIdx++}`}>{node.text}</em>;
+      return null;
+    });
+  };
+  codeSplit.forEach((seg) => {
+    if (/^`[^`]*`$/.test(seg)) {
+      elements.push(<code key={`c-${keyIdx++}`}>{seg.slice(1, -1)}</code>);
+    } else if (seg) {
+      elements.push(...processLinksBoldItalic(seg));
+    }
+  });
+  return elements;
+}
+
+function MarkdownText({ text }) {
+  const blocks = text.split(/\n{2,}/);
+  let keyIdx = 0;
+  const renderList = (lines, ordered) => {
+    const items = lines.map((line, i) => {
+      const content = ordered ? line.replace(/^\s*\d+\.\s?/, '') : line.replace(/^\s*[-*]\s?/, '');
+      return <li key={`li-${i}`}>{parseInlineMarkdown(content)}</li>;
+    });
+    return ordered ? <ol key={`ol-${keyIdx++}`}>{items}</ol> : <ul key={`ul-${keyIdx++}`}>{items}</ul>;
+  };
+  const nodes = blocks.map((block, bi) => {
+    // Fenced code block ```
+    const fence = block.match(/^```[a-zA-Z0-9_-]*\n[\s\S]*\n```$/);
+    if (fence) {
+      const inner = block.replace(/^```[a-zA-Z0-9_-]*\n/, '').replace(/\n```$/, '');
+      return (
+        <pre key={`pre-${bi}`}><code>{inner}</code></pre>
+      );
+    }
+    const lines = block.split(/\n/);
+    const isUL = lines.every((l) => /^\s*[-*]\s+/.test(l));
+    if (isUL) return renderList(lines, false);
+    const isOL = lines.every((l) => /^\s*\d+\.\s+/.test(l));
+    if (isOL) return renderList(lines, true);
+    return <p key={`p-${bi}`}>{parseInlineMarkdown(block.replace(/\n/g, ' '))}</p>;
+  });
+  return <>{nodes}</>;
+}
+
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
@@ -48,6 +128,24 @@ export default function ChatWidget() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    // Load persisted chat history once
+    try {
+      const raw = localStorage.getItem('chatMessages');
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length) {
+          setMessages(parsed.map((m) => ({ ...m, time: m.time ? new Date(m.time) : new Date() })));
+        }
+      }
+    } catch {}
+  }, []);
+
+  useEffect(() => {
+    // Persist chat history
+    try { localStorage.setItem('chatMessages', JSON.stringify(messages)); } catch {}
+  }, [messages]);
+
   function tryPlayChime() {
     try {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -81,12 +179,13 @@ export default function ChatWidget() {
     if (!q || loading) return;
     setLoading(true);
     const userMsg = { id: String(Date.now()), role: 'user', text: q, time: new Date() };
-    setMessages((m) => [...m, userMsg]);
+    const updated = [...messages, userMsg];
+    setMessages(updated);
     setInput('');
     try {
       if (!endpoint) throw new Error('Missing RAG function endpoint configuration');
-      // include recent chat history (last 8 messages)
-      const history = messages.slice(-8).map(m => ({ role: m.role, text: m.text }));
+      // include recent chat history (last 10 messages), including this user message
+      const history = updated.slice(-10).map((m) => ({ role: m.role, text: m.text }));
       const res = await fetch(endpoint, {
         method: 'POST',
         headers: {
@@ -141,7 +240,11 @@ export default function ChatWidget() {
             {messages.map((m) => (
               <div key={m.id} className={`msg ${m.role}`}>
                 <div className="bubble">
-                  <div className="text">{m.text}</div>
+                  {m.role === 'assistant' ? (
+                    <div className="text md"><MarkdownText text={m.text} /></div>
+                  ) : (
+                    <div className="text">{m.text}</div>
+                  )}
                   <div className="meta">{formatTime(m.time)}</div>
                 </div>
               </div>
