@@ -103,11 +103,7 @@ const Skills = () => {
 						</li>
 						<li>
 							<BiCheck className='skill__list-icon' />
-							<p>TensorFlow, Keras, HuggingFace</p>
-						</li>
-						<li>
-							<BiCheck className='skill__list-icon' />
-							<p>OpenCV2</p>
+							<p>TensorFlow, Keras, HuggingFace, OpenCV2</p>
 						</li>
 						<li>
 							<BiCheck className='skill__list-icon' />
@@ -119,15 +115,27 @@ const Skills = () => {
 						</li>
 						<li>
 							<BiCheck className='skill__list-icon' />
-							<p>SQL</p>
+							<p>SQL, Supabase, Pinecone</p>
 						</li>
-						<li>
+						{/* <li>
 							<BiCheck className='skill__list-icon' />
 							<p>GIT</p>
+						</li> */}
+						<li>
+							<BiCheck className='skill__list-icon' />
+							<p>FastAPI</p>
 						</li>
 						<li>
 							<BiCheck className='skill__list-icon' />
-							<p>Docker</p>
+							<p>GIT, GitHub Actions, Docker</p>
+						</li>
+						<li>
+							<BiCheck className='skill__list-icon' />
+							<p>OpenAI API, Gemini API</p>
+						</li>
+						<li>
+							<BiCheck className='skill__list-icon' />
+							<p>LangChain</p>
 						</li>
 
 					</ul>

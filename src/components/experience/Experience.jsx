@@ -18,13 +18,18 @@ const Experience = () => {
 						</div>
 						<div className="experience__details">
 							<div className="experience__header">
-								<h3>Data Scientist</h3>
+								<h3>Staff Data Scientist</h3>
 								<span className="company">Indra Solutions LLC</span>
 								<span className="date">May 2025 - Present</span>
 							</div>
 							<ul className="experience__bullets">
-								<li>Engineered an app using FastAPI and LLMs to analyze contract data and our profile, resulting in more efficient generation of RFP documents</li>
-								<li>Expedited proposal submissions, enabling the team to target and secure contracts ahead of competitors</li>
+								<li>Led a cross-functional team to develop custom MCP (Model Context Protocol) agents, improving real-time data processing capabilities following Agile Practices on Azure DevOps</li>
+								<li>Spearheaded the design and implementation of an organization-wide Intranet platform, enhancing collaboration and accessibility for all employees</li>
+								<li>Mentored junior engineers in LLM app development, Supabase optimization, and AI pipeline deployment best practices, leading to improved project completion rates and technical skills development</li>
+								<li>Re-engineered GitHub CI/CD workflows, reducing Azure Container costs through purging and image optimization, resulting in significant cost savings</li>
+								<li>Deployed cost-efficient LLM ChatBots using Supabase edge functions and RPC calls, optimizing inference pathways and concurrency limits, enhancing user interaction speed and experience</li>
+								<li>Engineered a Retrieval-Augmented Generation (RAG) pipeline using Supabase, LangChain and RPC functions, cutting query latency from 3 minutes to 12 seconds through optimized data retrieval/caching.</li>
+								<li>Integrated OpenAI APIs for LLM inference and fine-tuned model selection, reducing API latency from 2–3 minutes to 30 seconds via prompt optimization and efficient token usage, achieving 70% cost reduction while maintaining model accuracy and responsiveness.</li>
 							</ul>
 						</div>
 					</div>
