@@ -18,7 +18,7 @@ const Experience = () => {
 						</div>
 						<div className="experience__details">
 							<div className="experience__header">
-								<h3>Staff Data Scientist</h3>
+								<h3>Data Scientist</h3>
 								<span className="company">Indra Solutions LLC</span>
 								<span className="date">May 2025 - Present</span>
 							</div>
