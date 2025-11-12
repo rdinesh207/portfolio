@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.389c3791.css",
-    "main.js": "/portfolio/static/js/main.77690246.js",
+    "main.js": "/portfolio/static/js/main.b00339f9.js",
     "static/media/me-about.jpg": "/portfolio/static/media/me-about.f5025a2da5daa2bfea68.jpg",
     "static/media/me.png": "/portfolio/static/media/me.cbd5e2ef3f60b272fa17.png",
-    "static/media/Raghavendra Dinesh_Resume.pdf": "/portfolio/static/media/Raghavendra Dinesh_Resume.d5d7226db057eb848e9e.pdf",
+    "static/media/Raghavendra Dinesh_Resume.pdf": "/portfolio/static/media/Raghavendra Dinesh_Resume.02a0fbba5976c847ef13.pdf",
     "static/media/bgsw.png": "/portfolio/static/media/bgsw.6d61e43f1f2fe9d8cc61.png",
     "static/media/duke-university.png": "/portfolio/static/media/duke-university.37d35a9190c137391e5f.png",
     "static/media/coursera.png": "/portfolio/static/media/coursera.dac2ca977c7c069464cd.png",
@@ -15,10 +15,10 @@
     "static/media/Indrasol company logo_.png": "/portfolio/static/media/Indrasol company logo_.2bf6d82557dc6ccebd78.png",
     "index.html": "/portfolio/index.html",
     "main.389c3791.css.map": "/portfolio/static/css/main.389c3791.css.map",
-    "main.77690246.js.map": "/portfolio/static/js/main.77690246.js.map"
+    "main.b00339f9.js.map": "/portfolio/static/js/main.b00339f9.js.map"
   },
   "entrypoints": [
     "static/css/main.389c3791.css",
-    "static/js/main.77690246.js"
+    "static/js/main.b00339f9.js"
   ]
 }
