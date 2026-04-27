@@ -18,37 +18,36 @@ const Experience = () => {
 						</div>
 						<div className="experience__details">
 							<div className="experience__header">
-								<h3>Data Scientist</h3>
+								<h3>Applied AI Engineer</h3>
 								<span className="company">Indra Solutions LLC</span>
 								<span className="date">May 2025 - Present</span>
 							</div>
 							<ul className="experience__bullets">
-								<li>Led a cross-functional team to develop custom MCP (Model Context Protocol) agents, improving real-time data processing capabilities following Agile Practices on Azure DevOps</li>
-								<li>Spearheaded the design and implementation of an organization-wide Intranet platform, enhancing collaboration and accessibility for all employees</li>
-								<li>Mentored junior engineers in LLM app development, Supabase optimization, and AI pipeline deployment best practices, leading to improved project completion rates and technical skills development</li>
-								<li>Re-engineered GitHub CI/CD workflows, reducing Azure Container costs through purging and image optimization, resulting in significant cost savings</li>
-								<li>Deployed cost-efficient LLM ChatBots using Supabase edge functions and RPC calls, optimizing inference pathways and concurrency limits, enhancing user interaction speed and experience</li>
-								<li>Engineered a Retrieval-Augmented Generation (RAG) pipeline using Supabase, LangChain and RPC functions, cutting query latency from 3 minutes to 12 seconds through optimized data retrieval/caching.</li>
-								<li>Integrated OpenAI APIs for LLM inference and fine-tuned model selection, reducing API latency from 2–3 minutes to 30 seconds via prompt optimization and efficient token usage, achieving 70% cost reduction while maintaining model accuracy and responsiveness.</li>
+								<li>Designed, built, and deployed agentic LLM systems for social media automation using FastMCP and LangChain, running on GCP Cloud Run with Docker, reducing manual marketing effort and improving audience engagement.</li>
+								<li>Built production-grade retrieval-augmented generation pipelines (RAG) using Azure AI Foundry, Azure AI Search, LangChain, and Supabase, reducing end-to-end query latency from ~180 seconds to ~12 seconds.</li>
+								<li>Developed internal platforms and APIs to support organization-wide collaboration and knowledge access, improving developer productivity and accessibility.</li>
+								<li>Optimized CI/CD pipelines using GitHub Actions and container image optimization, reducing Azure container costs.</li>
+								<li>Mentored engineers on LLM apps, Supabase optimization, and agentic workflows, improving speed and code quality.</li>
 							</ul>
 						</div>
 					</div>
 
-					{/* ASU */}
+					{/* Logos Robotics Lab */}
 					<div className="experience__item">
 						<div className="experience__logo">
-							<img src={ASU} alt="ASU Logo" />
+							<img src={ASU} alt="Logos Robotics Lab Logo" />
 						</div>
 						<div className="experience__details">
 							<div className="experience__header">
-								<h3>Deep Learning Engineer</h3>
-								<span className="company">Arizona State University</span>
+								<h3>Applied ML Engineer</h3>
+								<span className="company">Logos Robotics Lab</span>
 								<span className="date">Jun 2024 - May 2025</span>
 							</div>
 							<ul className="experience__bullets">
-								<li>Engineered a custom BLIP-2 that integrates large vision and language models for plant health diagnostics attaining 98% accuracy with a Lite ResNet50 model and 96% accuracy with a fine-tuned SWIN Transformer over 40 epochs</li>
-								<li>Enhanced diagnostic precision by developing an end-to-end solution that leverages QFormer to interface a frozen SWIN encoder with Llama 3.2 3B, achieving a maximum RougeL F1 score of 0.86 for generating localized cure</li>
-								<li>Improved treatment insights by first validating a proof-of-concept using Gemini API (RougeL F1 score of 0.2) and later optimizing performance with PEFT on Vicuna 7B (score of 0.6) before transitioning to Llama 3.2 3B</li>
+								<li>Built and integrated multimodal (vision-language) AI systems for plant health diagnostics, leveraging zero-shot learning with BLIP-2, SWIN Transformer, and PyTorch-based pipelines to achieve up to 98% classification accuracy.</li>
+								<li>Designed a vision-language reasoning pipeline using Q-Former to connect a frozen vision encoder with LLaMA 3.2 (3B), generating localized treatment recommendations with a RougeL F1 score of 0.86.</li>
+								<li>Optimized and fine-tuned large models using PEFT, improving inference while reducing computational overhead.</li>
+								<li>Validated system across multiple model configurations and datasets, focusing on reliability and practical deployment.</li>
 							</ul>
 						</div>
 					</div>
@@ -83,9 +82,9 @@ const Experience = () => {
 								<span className="date">Sep 2019 - Aug 2022</span>
 							</div>
 							<ul className="experience__bullets">
-								<li>Delivered an RF emission analysis portal with interactive visualizations by Plotly. Agile practices applied during iterative refinements of an Autoencoder anomaly detection—reducing analysis time from 30–50 hours to 6–8 hours</li>
-								<li>Advanced lab asset management by designing a smart inventory tracking system on Raspberry Pi 3B that integrated YOLOv4-tiny for asset detection and Tesseract OCR for auto labeling, to provide real-time tracking</li>
-								<li>Accelerated report generation, reducing manual processing time by 90% by building a web application to automate data extraction and document rendering</li>
+								<li>Applied model distillation to refine an Autoencoder anomaly detection system, reducing analysis time from 30-50 hours to 6-8 hours and enhancing work throughput.</li>
+								<li>Designed a smart inventory tracking system using transfer learning on YOLOv4-tiny and Tesseract OCR, enabling real-time tracking and reducing asset search labour by 8 hours per week.</li>
+								<li>Accelerated report generation, reducing time by 90% by building a web app to automate data extraction and rendering.</li>
 							</ul>
 						</div>
 					</div>

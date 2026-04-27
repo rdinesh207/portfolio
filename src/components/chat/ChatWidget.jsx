@@ -3,12 +3,18 @@ import './ChatWidget.css';
 
 const formatTime = (d) => d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
+const SUGGESTED_QUESTIONS = [
+  "What are Raghavendra's key skills?",
+  "Tell me about his recent projects",
+  "What's his work experience?",
+  "Is he a good fit for AI/ML roles?",
+];
+
 function parseInlineMarkdown(text) {
   const elements = [];
   let keyIdx = 0;
   const codeSplit = text.split(/(`[^`]*`)/g);
   const processLinksBoldItalic = (str) => {
-    // Links first: [text](http(s)://url)
     const parts = [];
     let remaining = str;
     const linkRe = /\[([^\]]+)\]\((https?:[^)\s]+)\)/;
@@ -21,7 +27,6 @@ function parseInlineMarkdown(text) {
       parts.push({ type: 'a', label, url });
       remaining = remaining.slice(idx + full.length);
     }
-    // Now process bold then italic in each text piece
     const inlineNodes = parts.flatMap((p) => {
       if (typeof p !== 'string') return [p];
       const boldSplit = p.split(/(\*\*[^*]+\*\*)/g);
@@ -65,13 +70,10 @@ function MarkdownText({ text }) {
     return ordered ? <ol key={`ol-${keyIdx++}`}>{items}</ol> : <ul key={`ul-${keyIdx++}`}>{items}</ul>;
   };
   const nodes = blocks.map((block, bi) => {
-    // Fenced code block ```
     const fence = block.match(/^```[a-zA-Z0-9_-]*\n[\s\S]*\n```$/);
     if (fence) {
       const inner = block.replace(/^```[a-zA-Z0-9_-]*\n/, '').replace(/\n```$/, '');
-      return (
-        <pre key={`pre-${bi}`}><code>{inner}</code></pre>
-      );
+      return <pre key={`pre-${bi}`}><code>{inner}</code></pre>;
     }
     const lines = block.split(/\n/);
     const isUL = lines.every((l) => /^\s*[-*]\s+/.test(l));
@@ -89,14 +91,16 @@ export default function ChatWidget() {
     {
       id: 'welcome',
       role: 'assistant',
-      text: "Hello! I'm Raghavendra Dinesh's Portfolio Assistant. You can ask me about his skills, projects, education, or experience.",
+      text: "Hi! I'm Raghavendra's AI assistant. Ask me anything about his skills, experience, projects, or fit for your team.",
       time: new Date()
     }
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [streamingText, setStreamingText] = useState('');
   const scrollRef = useRef(null);
   const autoOpenedRef = useRef(false);
+  const abortRef = useRef(null);
 
   const endpoint = useMemo(() => {
     const ref = process.env.REACT_APP_SUPABASE_PROJECT_REF;
@@ -110,10 +114,9 @@ export default function ChatWidget() {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [messages, open]);
+  }, [messages, open, streamingText]);
 
   useEffect(() => {
-    // Auto-open once per session and play a short chime
     if (autoOpenedRef.current) return;
     const already = (() => {
       try { return sessionStorage.getItem('chatAutoOpened') === '1'; } catch { return false; }
@@ -129,7 +132,6 @@ export default function ChatWidget() {
   }, []);
 
   useEffect(() => {
-    // Load persisted chat history once
     try {
       const raw = localStorage.getItem('chatMessages');
       if (raw) {
@@ -142,7 +144,6 @@ export default function ChatWidget() {
   }, []);
 
   useEffect(() => {
-    // Persist chat history
     try { localStorage.setItem('chatMessages', JSON.stringify(messages)); } catch {}
   }, [messages]);
 
@@ -157,14 +158,12 @@ export default function ChatWidget() {
       gain.gain.exponentialRampToValueAtTime(0.2, now + 0.02);
       gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.28);
       gain.connect(ctx.destination);
-
       const osc1 = ctx.createOscillator();
       osc1.type = 'sine';
       osc1.frequency.setValueAtTime(660, now);
       osc1.connect(gain);
       osc1.start(now);
       osc1.stop(now + 0.12);
-
       const osc2 = ctx.createOscillator();
       osc2.type = 'sine';
       osc2.frequency.setValueAtTime(880, now + 0.14);
@@ -174,18 +173,22 @@ export default function ChatWidget() {
     } catch {}
   }
 
-  async function sendMessage() {
-    const q = input.trim();
+  async function sendMessage(overrideQuestion) {
+    const q = (overrideQuestion || input).trim();
     if (!q || loading) return;
     setLoading(true);
+    setStreamingText('');
     const userMsg = { id: String(Date.now()), role: 'user', text: q, time: new Date() };
     const updated = [...messages, userMsg];
     setMessages(updated);
     setInput('');
+
     try {
       if (!endpoint) throw new Error('Missing RAG function endpoint configuration');
-      // include recent chat history (last 10 messages), including this user message
       const history = updated.slice(-10).map((m) => ({ role: m.role, text: m.text }));
+      const controller = new AbortController();
+      abortRef.current = controller;
+
       const res = await fetch(endpoint, {
         method: 'POST',
         headers: {
@@ -193,18 +196,59 @@ export default function ChatWidget() {
           'Authorization': `Bearer ${process.env.REACT_APP_SUPABASE_ANON_KEY || ''}`,
           'apikey': process.env.REACT_APP_SUPABASE_ANON_KEY || ''
         },
-        body: JSON.stringify({ question: q, k: 5, history })
+        body: JSON.stringify({ question: q, k: 5, history, stream: true }),
+        signal: controller.signal,
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data?.error || 'Request failed');
-      const text = data?.answer || 'I could not find an answer.';
-      const assistantMsg = { id: String(Date.now() + 1), role: 'assistant', text, time: new Date() };
-      setMessages((m) => [...m, assistantMsg]);
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data?.error || `Request failed (${res.status})`);
+      }
+
+      const contentType = res.headers.get('Content-Type') || '';
+      if (contentType.includes('text/event-stream')) {
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let accumulated = '';
+        let buffer = '';
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split('\n');
+          buffer = lines.pop() || '';
+
+          for (const line of lines) {
+            if (!line.startsWith('data: ')) continue;
+            try {
+              const payload = JSON.parse(line.slice(6));
+              if (payload.token) {
+                accumulated += payload.token;
+                setStreamingText(accumulated);
+              }
+              if (payload.error) throw new Error(payload.error);
+            } catch (parseErr) {
+              if (parseErr.message && !parseErr.message.includes('JSON')) throw parseErr;
+            }
+          }
+        }
+
+        const finalText = accumulated || 'I could not find an answer.';
+        setStreamingText('');
+        setMessages((m) => [...m, { id: String(Date.now() + 1), role: 'assistant', text: finalText, time: new Date() }]);
+      } else {
+        const data = await res.json();
+        const text = data?.answer || 'I could not find an answer.';
+        setMessages((m) => [...m, { id: String(Date.now() + 1), role: 'assistant', text, time: new Date() }]);
+      }
     } catch (e) {
-      const assistantErr = { id: String(Date.now() + 2), role: 'assistant', text: String(e), time: new Date() };
-      setMessages((m) => [...m, assistantErr]);
+      if (e.name === 'AbortError') return;
+      setStreamingText('');
+      setMessages((m) => [...m, { id: String(Date.now() + 2), role: 'assistant', text: `Sorry, something went wrong. Please try again.`, time: new Date() }]);
     } finally {
       setLoading(false);
+      abortRef.current = null;
     }
   }
 
@@ -214,6 +258,8 @@ export default function ChatWidget() {
       sendMessage();
     }
   }
+
+  const showSuggestions = messages.length <= 1 && !loading;
 
   return (
     <div className={`chat-root ${open ? 'open' : ''}`}>
@@ -231,10 +277,10 @@ export default function ChatWidget() {
               <div className="chat-avatar">AI</div>
               <div>
                 <div>Portfolio Assistant</div>
-                <div className="chat-subtitle">Online • Ask about skills, projects, education</div>
+                <div className="chat-subtitle">Powered by Gemini &bull; Ask anything</div>
               </div>
             </div>
-            <button className="chat-close" onClick={() => setOpen(false)} aria-label="Close chat">×</button>
+            <button className="chat-close" onClick={() => setOpen(false)} aria-label="Close chat">&times;</button>
           </div>
           <div className="chat-body" ref={scrollRef}>
             {messages.map((m) => (
@@ -249,8 +295,22 @@ export default function ChatWidget() {
                 </div>
               </div>
             ))}
-            {loading && (
+            {streamingText && (
+              <div className="msg assistant">
+                <div className="bubble">
+                  <div className="text md"><MarkdownText text={streamingText} /></div>
+                </div>
+              </div>
+            )}
+            {loading && !streamingText && (
               <div className="msg assistant"><div className="bubble"><div className="typing"><span/><span/><span/></div></div></div>
+            )}
+            {showSuggestions && (
+              <div className="chat-suggestions">
+                {SUGGESTED_QUESTIONS.map((q, i) => (
+                  <button key={i} className="suggestion-chip" onClick={() => sendMessage(q)}>{q}</button>
+                ))}
+              </div>
             )}
           </div>
           <div className="chat-input">
@@ -258,15 +318,13 @@ export default function ChatWidget() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKey}
-              placeholder="Ask about skills, projects, education..."
+              placeholder="Ask about skills, projects, experience..."
               rows={1}
             />
-            <button onClick={sendMessage} disabled={loading || !input.trim()} className="send-btn">Send</button>
+            <button onClick={() => sendMessage()} disabled={loading || !input.trim()} className="send-btn">Send</button>
           </div>
         </div>
       )}
     </div>
   );
 }
-
-

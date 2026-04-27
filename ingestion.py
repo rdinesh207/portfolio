@@ -21,7 +21,8 @@ except Exception:  # pragma: no cover
     Repo = None  # type: ignore
 
 
-EMBEDDING_MODEL = "text-embedding-004"
+EMBEDDING_MODEL = "models/gemini-embedding-001"
+EMBEDDING_DIMENSIONS = 768
 embeddings_model = None  # lazily initialized after configure
 
 # Optional readers
@@ -93,9 +94,16 @@ def embed_text(text: str) -> List[float]:
     vectors: List[List[float]] = []
     for chunk in chunks:
         if globals().get("embeddings_model") is not None:
-            resp = embeddings_model.embed_content(content=chunk)  # type: ignore
+            resp = embeddings_model.embed_content(
+                content=chunk,
+                output_dimensionality=EMBEDDING_DIMENSIONS,
+            )  # type: ignore
         else:
-            resp = genai.embed_content(model=EMBEDDING_MODEL, content=chunk)
+            resp = genai.embed_content(
+                model=EMBEDDING_MODEL,
+                content=chunk,
+                output_dimensionality=EMBEDDING_DIMENSIONS,
+            )
         vec = _parse_embedding_response(resp)
         vectors.append(vec)
     return average_embeddings(vectors)
@@ -307,7 +315,7 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
     parser.add_argument("--supabase-url", dest="supabase_url", default=None, help="Supabase URL (overrides SUPABASE_URL)")
     parser.add_argument("--supabase-key", dest="supabase_key", default=None, help="Supabase anon/service key (overrides SUPABASE_ANON_KEY)")
     parser.add_argument("--github-token", dest="github_token", default=None, help="GitHub token for private repos (overrides GITHUB_TOKEN)")
-    parser.add_argument("--model", dest="model", default=EMBEDDING_MODEL, help="Gemini embedding model (default: text-embedding-004)")
+    parser.add_argument("--model", dest="model", default=EMBEDDING_MODEL, help="Gemini embedding model (default: gemini-embedding-001)")
     parser.add_argument("--max-chars", dest="max_chars", type=int, default=4000, help="Chunk size in characters")
     parser.add_argument("--overlap", dest="overlap", type=int, default=200, help="Chunk overlap in characters")
     return parser.parse_args(argv)

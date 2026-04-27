@@ -1,7 +1,41 @@
 import React, { useState } from 'react';
+import { FiGithub } from 'react-icons/fi';
 import './Portfolio.css';
 
 const data = [
+    {
+        "id": "10",
+        "title": "TutorMe — AI-Powered Interactive Tutoring Platform",
+        "date": "Apr 2026",
+        "github": "https://github.com/rdinesh207/tutor-me",
+        "problemStatement": "Traditional tutoring platforms lack personalization and real-time engagement. Students need interactive classrooms with AI personas that adapt to their learning style and respond via both voice and text.",
+        "skills": "Next.js 16, React 19, Tailwind CSS, Three.js, WunderGraph Cosmo (GraphQL Federation), Supabase, VAPI Voice AI, Framer Motion, Zustand",
+        "approach": "Built a modern federated architecture using WunderGraph Cosmo as a GraphQL gateway composing multiple InsForge edge function subgraphs. Integrated VAPI for real-time voice interactions with AI tutor personas, and used a dedicated Ghost PostgreSQL instance for conversation context and vector embeddings.",
+        "summary": "Designed and developed a full-stack AI tutoring platform where students join interactive classrooms, learn from AI personas, and engage through voice and text. The frontend uses Next.js 16 with React 19, 3D elements via React Three Fiber, and Framer Motion animations. The backend leverages InsForge Deno Edge Functions, AkashML for LLM inference, and TinyFish for web research grounding.",
+        "outcome": "Delivered a production-ready platform with real-time voice conversations, federated GraphQL API eliminating N+1 request problems, persistent AI memory via vector embeddings, and a modern interactive UI with 3D elements."
+    },
+    {
+        "id": "11",
+        "title": "Facebook Shop Agent — AI-Powered E-Commerce Management",
+        "date": "Apr 2026",
+        "github": "https://github.com/rdinesh207/facebook-shop-agent",
+        "problemStatement": "Managing Facebook Shops manually is tedious — creating products, tracking orders, and monitoring sales requires constant context-switching across Meta's tools. Store owners need a natural language interface to manage their shops efficiently.",
+        "skills": "FastMCP, LangChain, FastAPI, Meta Business SDK, Supabase, OpenAI GPT-4o, OAuth 2.0, Vite",
+        "approach": "Built an AI agent using FastMCP for tool execution and LangChain's ReAct agent pattern for reasoning. Integrated Meta Business SDK for Facebook Shop operations and Supabase for real-time data caching. Designed a glassmorphic dashboard for a premium user experience.",
+        "summary": "Developed a full-stack AI agent that lets store owners manage their Facebook Shops through natural language. The agent can create shops, list products, manage orders, and check sale statuses — all via conversational commands. Includes secure Facebook OAuth integration and multi-modal capabilities with GPT-4o for image-based product interactions.",
+        "outcome": "Successfully deployed an end-to-end solution with 6 MCP tools for shop management, secure OAuth flow, real-time Supabase sync, and a polished glassmorphic UI that simplifies Facebook Commerce operations to natural language commands."
+    },
+    {
+        "id": "12",
+        "title": "CareerMatch — AI-Powered Job Application Copilot",
+        "date": "Mar 2026",
+        "github": "https://github.com/rdinesh207/scrape-job-platform",
+        "problemStatement": "Job seekers waste hours switching between job boards, updating profiles, and manually tailoring resumes. The process is fragmented, repetitive, and lacks intelligent matching between candidate skills and job requirements.",
+        "skills": "FastAPI, LangGraph, LangChain, ScrapeGraphAI, OpenAI Embeddings, Supabase pgvector, React, TypeScript, Tailwind CSS",
+        "approach": "Built a guided workflow pipeline: ingest jobs from tracked URLs, build structured applicant profiles, match candidates to jobs using embeddings and vector search, generate fit summaries with gap analysis, and produce tailored resume/cover letter drafts.",
+        "summary": "Designed an AI copilot that transforms the fragmented job application process into one guided workflow. Features include job ingestion with structured extraction, applicant enrichment from LinkedIn/GitHub/portfolio, semantic search with Supabase pgvector, match scoring with requirement gap breakdown, and a networking assistant for outreach messages.",
+        "outcome": "Delivered a comprehensive platform with semantic job matching, automated document generation, and networking assistance — reducing the time from job discovery to application submission from hours to minutes."
+    },
     {
         "id": "1",
         "title": "Plant Image based Health Diagnostics System with BLIP-2 Image Captioning using Vicuna 7B and Gemini API",
@@ -98,12 +132,22 @@ const Portfolio = () => {
 			<h2>Portfolio</h2>
 
 			<div className='container portfolio__container'>
-				{data.map(({ id, title, problemStatement, skills, approach, summary, outcome }) => {
+				{data.map(({ id, title, date, github, problemStatement, skills, approach, summary, outcome }) => {
 					const isOpen = expandedItem === id;
 
 					return (
 						<article key={id} className='portfolio__item' onClick={() => toggleItem(id)}>
-							<h3>{title}</h3>
+							<div className='portfolio__item-header'>
+								<h3>{title}</h3>
+								{date && <span className='portfolio__date'>{date}</span>}
+							</div>
+							{github && (
+								<div className='portfolio__item-cta' onClick={(e) => e.stopPropagation()}>
+									<a href={github} target='_blank' rel='noreferrer' className='btn btn-primary'>
+										<FiGithub /> GitHub
+									</a>
+								</div>
+							)}
 							{!isOpen ? (
 								<div>
 									<p><strong>Problem Statement:</strong> {problemStatement}</p>
