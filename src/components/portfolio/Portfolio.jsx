@@ -4,6 +4,17 @@ import './Portfolio.css';
 
 const data = [
     {
+        "id": "13",
+        "title": "Compass — Company Analysis Agent for VCs",
+        "date": "May 2026",
+        "github": "https://github.com/rdinesh207/company-analysis-agent/tree/raghu",
+        "problemStatement": "Early-stage VCs see 1,000–3,000 decks per year but write only 8–15 checks. Each pass/pursue decision is made on sparse, self-reported information — a deck and a founder call — within a ~48-hour window. Analysts spend their week as research clerks; partners decide on gut feel.",
+        "skills": "Python, FastAPI, LangChain Agents, Bright Data (web scraping), Crunchbase API, LinkedIn data, Zeabur (deployment), Butterbase, Token Router",
+        "approach": "Built a multi-step agentic pipeline: Resolve (disambiguate company name to a single entity via domain, Crunchbase, LinkedIn), Collect (pull site, filings, press, headcount trend, hiring posts, product signals, reviews), Reason (map competitors and substitutes, score market timing, surface contradictions), Write (emit a structured memo with verdict, confidence score, overview, market analysis, competitor analysis, risk breakdown, and targeted founder questions).",
+        "summary": "Compass takes a company name as input and returns a complete investment memo in minutes. The agent triangulates founder LinkedIn profiles, Crunchbase funding history, press and news signals, and competitor sites to produce a structured memo — investment recommendation with confidence score (0–100), company overview, market analysis (why-now, what changed), competitor landscape, and risk ratings. Output format is consistent across every deal, enabling apples-to-apples comparison across a firm's pipeline.",
+        "outcome": "Reduces investment decision research from 1 week to 8 minutes per company. VCs can review 3× more deals per week with 100% of memos in a consistent, comparable format — replacing analyst research-clerk work with targeted founder questions derived from verified external signals."
+    },
+    {
         "id": "10",
         "title": "TutorMe — AI-Powered Interactive Tutoring Platform",
         "date": "Apr 2026",
